@@ -14,6 +14,9 @@ module.exports = function Index({ pokemon }) {
        
     return (
         <div style={myStyle}>
+            <nav>
+            <a href="/pokemon/new">Create New Pokemon</a>
+            </nav>
             <h1>
                 See All Those Pokemon :3
             </h1>

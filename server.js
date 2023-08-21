@@ -22,11 +22,33 @@ app.get('/', (req,res) => {
     res.send(`<h1>Welcome to the pokemon app...</h1>`)
 })
 
+//Middle ware 
+app.use((req,res,next)=> {
+    console.log('I run for all routes!')
+    next();
+})
+
+//this allows the body 
+app.use(express.urlencoded({extended:false}))
+
+
 app.get('/pokemon', (req,res) => {
     // res.send(pokemon)
     res.render("Index", {
         pokemon: pokemon
     })
+})
+
+app.get('/pokemon/new' , (req, res) =>{
+    res.render('New')
+})
+
+//create
+app.post('/pokemon', (req,res) =>{
+    console.log(req.body)
+    pokemon.push(req.body)
+    console.log("the pokemon array", pokemon)
+    res.redirect("/pokemon")
 })
 
 app.get('/pokemon/:id', (req,res) => {
