@@ -1,25 +1,25 @@
-// const express = require("express");
-// const pokemon = require("./models/pokemon.js")
+const express = require("express");
+const pokemon = require("./models/pokemon.js")
 
 
-// const app = express();
-// const port = 3007;
+const app = express();
+const port = 3007;
 
-// // SETTING UP VIEW ENGINE
-// app.set("views", `${__dirname}/views`);
-// app.set('view engine', 'jsx');
-// app.engine('jsx', require('express-react-views').createEngine());
+// SETTING UP VIEW ENGINE
+app.set("views", `${__dirname}/views`);
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 
-// //LISTENER
-// app.listen(port , (req, res) => {
-//     console.log(`port is listening on ${port}`)
-// })
+//LISTENER
+app.listen(port , (req, res) => {
+    console.log(`port is listening on ${port}`)
+})
 
-// //ROUTE
-// app.get('/', (req,res) => {
-//     res.send(`<h1>Welcome to the pokemon app...</h1>`)
-// })
+//ROUTE
+app.get('/', (req,res) => {
+    res.send(`<h1>Welcome to the pokemon app...</h1>`)
+})
 
 // app.get('/pokemon', (req,res) => {
 //     // res.send(pokemon)
