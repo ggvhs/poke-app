@@ -17,6 +17,13 @@ module.exports = function Index({ pokemon }) {
             <h1>
                 See All Those Pokemon :3
             </h1>
+            <ul>
+            {pokemon.map((pokemon, index)=>{
+                return (
+                    <li key={index}>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</li>
+                )
+            })}
+            </ul>
         </div>
     )
         
