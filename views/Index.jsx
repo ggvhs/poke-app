@@ -8,7 +8,7 @@ module.exports = function Index({ pokemon }) {
         backgroundColor: '#000000',
         width: "100vw",
         height: "100vh",
-        textAlign: "center"
+        textAlign: "center",
         };
         
        
@@ -20,7 +20,11 @@ module.exports = function Index({ pokemon }) {
             <ul>
             {pokemon.map((pokemon, index)=>{
                 return (
-                    <li key={index}>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</li>
+                    <>
+                    
+                    <li key={index}> <a href={`/pokemon/${index}`}>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} </a></li>
+                   
+                    </>
                 )
             })}
             </ul>
