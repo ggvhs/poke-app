@@ -1,28 +1,28 @@
-// import React from 'react';
+import React from 'react';
 
 
-// module.exports = function Index({ pokemon }) {
+module.exports = function Index({ pokemon }) {
 
-//     const myStyle = {
-//         color: '#ffffff',
-//         backgroundColor: '#000000',
-//         width: "100vw",
-//         height: "100vh",
-//         textAlign: "center"
-//         };
+    const myStyle = {
+        color: '#ffffff',
+        backgroundColor: '#000000',
+        width: "100vw",
+        height: "100vh",
+        textAlign: "center"
+        };
         
        
-//     return (
-//         <div style={myStyle}>
-//             <h1>
-//                 See All Those Pokemon :3
-//             </h1>
-//         </div>
-//     )
+    return (
+        <div style={myStyle}>
+            <h1>
+                See All Those Pokemon :3
+            </h1>
+        </div>
+    )
         
 
 
-// }
+}
 
 
 /*

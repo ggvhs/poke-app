@@ -21,12 +21,12 @@ app.get('/', (req,res) => {
     res.send(`<h1>Welcome to the pokemon app...</h1>`)
 })
 
-// app.get('/pokemon', (req,res) => {
-//     // res.send(pokemon)
-//     res.render("Index", {
-//         pokemon: pokemon
-//     })
-// })
+app.get('/pokemon', (req,res) => {
+    // res.send(pokemon)
+    res.render("Index", {
+        pokemon: pokemon
+    })
+})
 
 
 
