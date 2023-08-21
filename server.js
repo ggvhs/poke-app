@@ -1,6 +1,7 @@
 const express = require("express");
 const pokemon = require("./models/pokemon.js")
 
+//my server runs
 
 const app = express();
 const port = 3007;
