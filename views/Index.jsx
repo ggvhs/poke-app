@@ -1,4 +1,5 @@
 import React from 'react';
+import Pokeman from '../models/pokeman';
 
 
 module.exports = function Index({ pokemon }) {
@@ -10,6 +11,10 @@ module.exports = function Index({ pokemon }) {
         height: "100vh",
         textAlign: "center",
         };
+
+    const listItemStyle ={
+        listStyleType: 'none'
+    }
         
        
     return (
@@ -21,11 +26,11 @@ module.exports = function Index({ pokemon }) {
                 See All Those Pokemon :3
             </h1>
             <ul>
-            {pokemon.map((pokemon, index)=>{
+            {pokemon.map((pokeman, index)=>{
                 return (
                     <>
                     
-                    <li key={index}> <a href={`/pokemon/${index}`}>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} </a></li>
+                    <li style={listItemStyle} key={index}> <a href={`/pokemon/${Pokeman.id}`}>{pokeman.name.charAt(0).toUpperCase() + pokeman.name.slice(1)} </a></li>
                    
                     </>
                 )
@@ -37,14 +42,4 @@ module.exports = function Index({ pokemon }) {
 
 
 }
-
-
-/*
-MAKE A DIV
-
- return (
-          <div style={myStyle}>My First React Component!</div>;
-        }
-
-*/
 

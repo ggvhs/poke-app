@@ -4,6 +4,7 @@ function New() {
     return (
       <div>
           <h1>New Pokemon Page</h1>
+          <a href="/pokemon">back</a>
   
           <form action="/pokemon" method='POST'>
               Name:<input type="text" name='name'/> <br />

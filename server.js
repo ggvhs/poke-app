@@ -1,10 +1,25 @@
+require('dotenv').config();
 const express = require("express");
-const pokemon = require("./models/pokemon.js")
+const Pokeman = require("./models/pokeman.js")
+const mongoose = require('mongoose')
 
 //my server runs
 
 const app = express();
 const port = 3007;
+
+
+mongoose.connect(process.env.MONGO_URI_POKEMON, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    
+  });
+
+
+mongoose.connection.once('open',()=>{
+    console.log('connected to mongodb')
+  })
+
 
 // SETTING UP VIEW ENGINE
 app.set("views", `${__dirname}/views`);
@@ -17,7 +32,7 @@ app.listen(port , (req, res) => {
     console.log(`port is listening on ${port}`)
 })
 
-//ROUTE
+// INDEX ROUTE
 app.get('/', (req,res) => {
     res.send(`<h1>Welcome to the pokemon app...</h1>`)
 })
@@ -32,10 +47,10 @@ app.use((req,res,next)=> {
 app.use(express.urlencoded({extended:false}))
 
 
-app.get('/pokemon', (req,res) => {
-    // res.send(pokemon)
+app.get('/pokemon',  async function(req,res) {
+    const foundPokeman = await Pokeman.find({})
     res.render("Index", {
-        pokemon: pokemon
+        pokemon: foundPokeman
     })
 })
 
@@ -44,31 +59,20 @@ app.get('/pokemon/new' , (req, res) =>{
 })
 
 //create
-app.post('/pokemon', (req,res) =>{
-    console.log(req.body)
-    pokemon.push(req.body)
-    console.log("the pokemon array", pokemon)
+app.post('/pokemon', async (req,res) =>{
+    console.log("this is the pokemon ",req.body)
+    const createdPokemon = await Pokeman.create({
+    name: req.body.name,
+    img: "http://imgpokemondb.net/artwork/" + req.body.name.toLowerCase()
+    })
+    console.log(createdPokemon)
     res.redirect("/pokemon")
 })
 
-app.get('/pokemon/:id', (req,res) => {
+app.get('/pokemon/:id', async (req,res) => {
+    const onePokeman = await Pokeman.findById(req.params.id)
     // res.send(req.params.id);
     res.render("Show",{
-        pokemon: pokemon[req.params.id]
+        pokemon: onePokeman
     })
 });
-
-
-/*
-EXAMPLES
-
-app.get("/fruits", (req, res) => {
-    res.render("fruits/Index", {
-        fruits: fruits
-    });
-});
-
-
-DIV FOR LATER
-
-*/
